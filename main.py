@@ -36,6 +36,7 @@ if __name__ == "__main__":
     data = fetch_data()
     save_to_csv(data)
 # 勝率予測を表示する関数
+print(f"取得データ件数: {len(data)}")
 def predict_win_rate(data_list):
     if not data_list:
         print("データがありません")
@@ -66,5 +67,6 @@ def predict_win_rate(data_list):
 
 if __name__ == "__main__":
     data = fetch_data()
+    print(f"取得データ件数: {len(data)}")   # ←追加
     save_to_csv(data)
     predict_win_rate(data)
