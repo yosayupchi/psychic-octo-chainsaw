@@ -13,10 +13,10 @@ def fetch_data():
     print("HTML取得成功。タイトル:", soup.title.string if soup.title else "タイトルなし")
 
     rows = soup.select("table tr")
-    print("テーブル行数 (table tr):", len(rows))
-    for row in rows[:3]:
-        cols = [c.get_text(strip=True) for c in row.find_all("td")]
-        print("行サンプル:", cols)
+print("テーブル行数:", len(rows))
+for row in rows[:3]:
+    cols = [c.get_text(strip=True) for c in row.find_all("td")]
+    print("行サンプル:", cols)
 
     data_list = []
     for row in rows[1:]:
