@@ -26,7 +26,7 @@ for row in rows[:3]:
     return data_list
 
     # 台情報を取得（HTML構造に依存するので要調整）
-    rows = soup.select("table
+    rows = soup.select("table tr")
 
 def save_to_csv(data):
     today = datetime.now().strftime("%Y-%m-%d")
