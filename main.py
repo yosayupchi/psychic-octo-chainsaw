@@ -23,7 +23,7 @@ for row in rows[:3]:
         cols = [c.get_text(strip=True) for c in row.find_all("td")]
         if cols:
             data_list.append(cols)
-    return data_list
+    return data_list   # ←必ず def fetch_data() の中に入れる（スペース4つ）
 
     # 台情報を取得（HTML構造に依存するので要調整）
     rows = soup.select("table tr")
