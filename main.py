@@ -10,16 +10,23 @@ def fetch_data():
     response = requests.get(URL)
     soup = BeautifulSoup(response.text, "html.parser")
 
-    data_list = []
+    print("HTML取得成功。タイトル:", soup.title.string if soup.title else "タイトルなし")
 
-    # 台情報を取得（HTML構造に依存するので要調整）
-    rows = soup.select("table tr")  # 仮: テーブル内の行を取得
-    for row in rows[1:]:  # ヘッダー除外
+    rows = soup.select("table tr")
+    print("テーブル行数 (table tr):", len(rows))
+    for row in rows[:3]:
+        cols = [c.get_text(strip=True) for c in row.find_all("td")]
+        print("行サンプル:", cols)
+
+    data_list = []
+    for row in rows[1:]:
         cols = [c.get_text(strip=True) for c in row.find_all("td")]
         if cols:
             data_list.append(cols)
-
     return data_list
+
+    # 台情報を取得（HTML構造に依存するので要調整）
+    rows = soup.select("table
 
 def save_to_csv(data):
     today = datetime.now().strftime("%Y-%m-%d")
